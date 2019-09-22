@@ -5,10 +5,6 @@
  */
 package library;
 
-/**
- *
- * @author Yelson
- */
 public class Weapon {
     
 }

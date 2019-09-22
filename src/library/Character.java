@@ -6,6 +6,7 @@
 package library;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Yelson
@@ -24,11 +25,11 @@ public abstract class Character implements IPrototype<Character>{
     private ArrayList<String> availableWeapons;
     private Weapon currentWeapon;
     
-    private Character(String pName, ArrayList<String> pImages, int pLife, int pLimitWeaponQuantity, int pLevel, int pSpace, int pLevelRequired, int pCost, ArrayList<String> pAvailableWeapons,Weapon pCurrentWeapon){
+    private Character(String pName, ArrayList<String> pImages, int pLife, int pLimitWeaponQuantity, ArrayList<Weapon> pUsedWeapons,int pLevel, int pSpace, int pLevelRequired, int pCost, ArrayList<String> pAvailableWeapons,Weapon pCurrentWeapon){
         name = pName;
         images = pImages;
         life = pLife;
-        usedWeapons = new ArrayList<>();
+        usedWeapons = pUsedWeapons;
         limitWeaponQuantity = pLimitWeaponQuantity;
         level = pLevel;
         space = pSpace;
@@ -60,12 +61,37 @@ public abstract class Character implements IPrototype<Character>{
         Character clone = new Character(name, life, limitWeaponQuantity, level, space, levelRequired, cost, currentWeapon){};
         clone.setAvailableWeapons(availableWeapons);
         clone.setImages(images);
+        clone.setUsedWeapons(usedWeapons);
         return clone; 
     }
 
      @Override
      public Character deepClone() {
-         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<Weapon> usedWeaponList = new ArrayList<>();
+        ArrayList<String> imageList = new ArrayList<>();
+        ArrayList<String> availableWeaponList = new ArrayList<>();
+        
+        //Clona las armas que tenga en uso
+        for(Weapon weapon : usedWeapons){
+            //Weapon clonedWeapon = weapon.deepClone();
+            //usedWeaponList.add(clonedWeapon);
+        }
+        
+        //Clona las armas que tenga disponibles
+        for(int i = 0; i < availableWeapons.size(); i++){
+            availableWeaponList.add(availableWeapons.get(i));
+        }
+        
+        //Clona las imágenes
+        for(int i = 0; i < images.size(); i++){
+            imageList.add(images.get(i));
+        }
+        
+        Character clone = new Character(name, life, limitWeaponQuantity, level, space, levelRequired, cost, currentWeapon){};
+        clone.setAvailableWeapons(availableWeaponList);
+        clone.setImages(imageList);
+        clone.setUsedWeapons(usedWeaponList);
+        return clone;
      }
     
     //-------------------------- Getters and Setters ---------------------------
