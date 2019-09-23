@@ -12,7 +12,7 @@ import java.util.HashMap;
  */
 public class CharacterFactory {
     
-    private HashMap<String,IPrototype<Character>> characterPrototypes;
+    private static HashMap<String,IPrototype<Character>> characterPrototypes;
     
     public CharacterFactory(){
         characterPrototypes = new HashMap<>();
