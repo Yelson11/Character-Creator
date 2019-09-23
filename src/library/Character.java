@@ -93,6 +93,115 @@ public abstract class Character implements IPrototype<Character>{
         clone.setUsedWeapons(usedWeaponList);
         return clone;
      }
+     
+    //---------------------------- Builder Pattern -----------------------------
+     public static class CharacterBuilder implements IBuilder<Character>{
+         
+        private String name;
+        private ArrayList<String> images;
+        private int life;
+        private ArrayList<Weapon> usedWeapons;
+        private int limitWeaponQuantity;
+        private int level;
+        private int space;
+        private int levelRequired;
+        private int cost;
+        private ArrayList<String> availableWeapons;
+        private Weapon currentWeapon;
+        
+        public CharacterBuilder(){
+            //Atributos por default
+            this.name = "Character";
+            this.images = new ArrayList<>();
+            this.life = 0;
+            this.usedWeapons = new ArrayList<>();
+            this.limitWeaponQuantity = 0;
+            this.level = 0;
+            this.space = 0;
+            this.levelRequired = 0;
+            this.cost = 0;
+            this.availableWeapons = new ArrayList<>();
+            this.currentWeapon = new Weapon();
+        }
+        
+        public CharacterBuilder setCharacter(Character pCharacter){
+            this.name = pCharacter.getName();
+            this.images = pCharacter.getImages();
+            this.life = pCharacter.getLife();
+            this.usedWeapons = pCharacter.getUsedWeapons();
+            this.limitWeaponQuantity = pCharacter.getLimitWeaponQuantity();
+            this.level = pCharacter.getLevel();
+            this.space = pCharacter.getSpace();
+            this.levelRequired = pCharacter.getLevelRequired();
+            this.cost = pCharacter.getCost();
+            this.availableWeapons = pCharacter.getAvailableWeapons();
+            this.currentWeapon = pCharacter.getCurrentWeapon();
+            return this;
+        }
+        
+        public CharacterBuilder addName(String pName){
+            this.name = pName;
+            return this;
+        }
+        
+        public CharacterBuilder addImage(String pImage){
+            this.images.add(pImage);
+            return this;
+        }
+        
+        public CharacterBuilder addLife(int pLife){
+            this.life = pLife;
+            return this;
+        }
+        
+        public CharacterBuilder addUsedWeapon(Weapon pWeapon){
+            //this.usedWeapons.add(pWeapon.getName());
+            return this;
+        }
+        
+        public CharacterBuilder addLimitWeaponQuantity(int pLimit){
+            this.limitWeaponQuantity = pLimit;
+            return this;
+        }
+
+        public CharacterBuilder addLevel(int pLevel) {
+            this.level = pLevel;
+            return this;
+        }
+
+        public CharacterBuilder addSpace(int pSpace) {
+            this.space = pSpace;
+            return this;
+        }
+
+        public CharacterBuilder addLevelRequired(int pLevelRequired) {
+            this.levelRequired = pLevelRequired;
+            return this;
+        }
+
+        public CharacterBuilder addCost(int pCost) {
+            this.cost = pCost;
+            return this;
+        }
+
+        public CharacterBuilder addAvailableWeapons(Weapon pAvailableWeapon) {
+            //this.availableWeapons.add(pAvailableWeapon.getName());
+            return this;
+        }
+
+        public CharacterBuilder addCurrentWeapon(Weapon pCurrentWeapon) {
+            this.currentWeapon = pCurrentWeapon;
+            return this;
+        }
+  
+
+        @Override
+        public Character build() {
+            //Aquí hay un {} al final
+            return new Character(name, life, limitWeaponQuantity, level, space, levelRequired, cost, currentWeapon) {};
+        }
+         
+     }
     
     //-------------------------- Getters and Setters ---------------------------
 
