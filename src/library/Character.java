@@ -121,7 +121,6 @@ public abstract class Character implements IPrototype<Character>{
             this.levelRequired = 0;
             this.cost = 0;
             this.availableWeapons = new ArrayList<>();
-            this.currentWeapon = new Weapon();
         }
         
         public CharacterBuilder setCharacter(Character pCharacter){

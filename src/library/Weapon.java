@@ -1,7 +1,7 @@
 
 package library;
 
-public class Weapon implements IWeaponPrototype<Weapon>{
+public class Weapon implements IPrototype<Weapon>{
     protected String name;
     protected int scope;
     protected int level;
