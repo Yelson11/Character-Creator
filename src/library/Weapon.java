@@ -104,5 +104,69 @@ public class Weapon implements IPrototype<Weapon>{
         return "Weapon{" + "name=" + name + ", scope=" + scope + ", level=" + level + ", damage=" + damage + ", cost=" + cost + ", levelRequired=" + levelRequired + ", image=" + image + '}';
     }
     
+    public static class WeaponBuilder implements IBuilder<Weapon>{
+
+        private String name;
+        private int scope;
+        private int level;
+        private int damage;
+        private int cost;
+        private int levelRequired;
+        private String image;
+
+        public WeaponBuilder() {
+            this.name = "";
+            this.scope = 1;
+            this.level = 1;
+            this.damage = 1;
+            this.cost = 0;
+            this.levelRequired = 1;
+            this.image = "";
+        }
+        
+        
+
+        public WeaponBuilder addName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public WeaponBuilder addScope(int scope) {
+            this.scope = scope;
+            return this;
+        }
+
+        public WeaponBuilder addLevel(int level) {
+            this.level = level;
+            return this;
+        }
+
+        public WeaponBuilder addDamage(int damage) {
+            this.damage = damage;
+            return this;
+        }
+
+        public WeaponBuilder addCost(int cost) {
+            this.cost = cost;
+            return this;
+        }
+
+        public WeaponBuilder addLevelRequired(int levelRequired) {
+            this.levelRequired = levelRequired;
+            return this;
+        }
+
+        public WeaponBuilder addImage(String image) {
+            this.image = image;
+            return this;
+        }
+        
+        
+        @Override
+        public Weapon build() {
+            return new Weapon(name,scope,level,damage,cost,levelRequired,image);
+        }
+    }
+    
     
 }
