@@ -1,5 +1,6 @@
 package library;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class WeaponFactory {
@@ -13,6 +14,10 @@ public class WeaponFactory {
         Weapon prototype=prototypes.get(pKey);
         if (prototype !=null)return prototype.deepClone();
         else return null;
+    }
+    
+    public static ArrayList<Weapon> getValues(){
+        return (ArrayList<Weapon>) prototypes.values();
     }
     
     
