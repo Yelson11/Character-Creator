@@ -154,7 +154,7 @@ public abstract class Character implements IPrototype<Character>{
         }
         
         public CharacterBuilder addUsedWeapon(Weapon pWeapon){
-            //this.usedWeapons.add(pWeapon.getName());
+            this.usedWeapons.add(pWeapon);
             return this;
         }
         

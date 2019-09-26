@@ -5,6 +5,7 @@
  */
 package library;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -22,6 +23,10 @@ public class CharacterFactory {
     
     public static IPrototype<Character> getPrototype(String pName){
         return characterPrototypes.get(pName);
+    }
+    
+    public static ArrayList<IPrototype<Character>> getValues(){
+        return (ArrayList<IPrototype<Character>>) characterPrototypes.values();
     }
     
 }
