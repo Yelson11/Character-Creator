@@ -143,8 +143,6 @@ public class Weapon implements IPrototype<Weapon>{
             this.image = "";
         }
         
-        
-
         public WeaponBuilder addName(String name) {
             this.name = name;
             return this;

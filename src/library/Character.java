@@ -237,6 +237,10 @@ public class Character implements IPrototype<Character>{
     public void setUsedWeapons(ArrayList<Weapon> usedWeapons) {
         this.usedWeapons = usedWeapons;
     }
+    
+    public void addUsedWeapon(Weapon pWeapon){
+        this.usedWeapons.add(pWeapon);
+    }
 
     public int getLimitWeaponQuantity() {
         return limitWeaponQuantity;
