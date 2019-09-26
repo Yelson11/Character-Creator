@@ -22,7 +22,9 @@ public class CharacterFactory {
     }
     
     public static IPrototype<Character> getPrototype(String pName){
-        return characterPrototypes.get(pName);
+        IPrototype<Character> prototype= characterPrototypes.get(pName);
+        if (prototype !=null)return prototype.deepClone();
+        else return null;
     }
     
     public static ArrayList<IPrototype<Character>> getValues(){

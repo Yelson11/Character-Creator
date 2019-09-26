@@ -119,6 +119,7 @@ public class Weapon implements IPrototype<Weapon>{
     }
 
     
+    //---------------------------- Builder Pattern -----------------------------
     
     public static class WeaponBuilder implements IBuilder<Weapon>{
 

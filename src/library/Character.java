@@ -73,8 +73,8 @@ public abstract class Character implements IPrototype<Character>{
         
         //Clona las armas que tenga en uso
         for(Weapon weapon : usedWeapons){
-            //Weapon clonedWeapon = weapon.deepClone();
-            //usedWeaponList.add(clonedWeapon);
+            Weapon clonedWeapon = weapon.deepClone();
+            usedWeaponList.add(clonedWeapon);
         }
         
         //Clona las armas que tenga disponibles
@@ -121,6 +121,7 @@ public abstract class Character implements IPrototype<Character>{
             this.levelRequired = 0;
             this.cost = 0;
             this.availableWeapons = new ArrayList<>();
+            this.currentWeapon=null;
         }
         
         public CharacterBuilder setCharacter(Character pCharacter){
@@ -184,7 +185,7 @@ public abstract class Character implements IPrototype<Character>{
         }
 
         public CharacterBuilder addAvailableWeapons(Weapon pAvailableWeapon) {
-            //this.availableWeapons.add(pAvailableWeapon.getName());
+            this.availableWeapons.add(pAvailableWeapon.getName());
             return this;
         }
 
@@ -197,7 +198,8 @@ public abstract class Character implements IPrototype<Character>{
         @Override
         public Character build() {
             //Aquí hay un {} al final
-            return new Character(name, life, limitWeaponQuantity, level, space, levelRequired, cost, currentWeapon) {};
+            if(currentWeapon==null)currentWeapon=usedWeapons.get(0);
+            return new Character(name, images, life, limitWeaponQuantity, usedWeapons, level, space, levelRequired, cost, availableWeapons, currentWeapon){};
         }
          
      }
