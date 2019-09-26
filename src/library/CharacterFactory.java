@@ -6,6 +6,7 @@
 package library;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 
 /**
@@ -28,7 +29,9 @@ public class CharacterFactory {
     }
     
     public static ArrayList<IPrototype<Character>> getValues(){
-        return (ArrayList<IPrototype<Character>>) characterPrototypes.values();
+        Collection<IPrototype<Character>> col=characterPrototypes.values();
+        ArrayList<IPrototype<Character>> res= new ArrayList<>(col);
+        return res;
     }
     
 }

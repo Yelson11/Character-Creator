@@ -1,6 +1,7 @@
 package library;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 
 public class WeaponFactory {
@@ -17,7 +18,9 @@ public class WeaponFactory {
     }
     
     public static ArrayList<Weapon> getValues(){
-        return (ArrayList<Weapon>) prototypes.values();
+        Collection<Weapon> col=prototypes.values();
+        ArrayList<Weapon> res= new ArrayList<>(col);
+        return res;
     }
     
     
