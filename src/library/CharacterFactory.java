@@ -12,17 +12,15 @@ import java.util.HashMap;
  */
 public class CharacterFactory {
     
-    private static HashMap<String,IPrototype<Character>> characterPrototypes;
+    private static HashMap<String,IPrototype<Character>> characterPrototypes = new HashMap<>();
     
-    public CharacterFactory(){
-        characterPrototypes = new HashMap<>();
-    }
     
-    public void addPrototype(String pKey, IPrototype<Character> pCharacter){
+    
+    public static void addPrototype(String pKey, IPrototype<Character> pCharacter){
         characterPrototypes.put(pKey, pCharacter);
     }
     
-    public IPrototype<Character> getPrototype(String pName){
+    public static IPrototype<Character> getPrototype(String pName){
         return characterPrototypes.get(pName);
     }
     

@@ -115,7 +115,7 @@ public abstract class Character implements IPrototype<Character>{
             this.images = new ArrayList<>();
             this.life = 0;
             this.usedWeapons = new ArrayList<>();
-            this.limitWeaponQuantity = 0;
+            this.limitWeaponQuantity = 10;
             this.level = 0;
             this.space = 0;
             this.levelRequired = 0;
