@@ -4,15 +4,17 @@ package library;
 public class Weapon implements IPrototype<Weapon>{
     protected String name;
     protected int scope;
+    protected int range;
     protected int level;
     protected int damage;
     protected int cost;
     protected int levelRequired;
     protected String image;
 
-    public Weapon(String name, int scope, int level, int damage, int cost, int levelRequired, String image) {
+    public Weapon(String name, int scope, int range, int level, int damage, int cost, int levelRequired, String image) {
         this.name = name;
         this.scope = scope;
+        this.range = range;
         this.level = level;
         this.damage = damage;
         this.cost = cost;
@@ -20,26 +22,29 @@ public class Weapon implements IPrototype<Weapon>{
         this.image = image;
     }
 
+   
+
     @Override
     public Weapon clone() {
         Weapon clone;
-        clone= new Weapon(name,scope,level,damage,cost, levelRequired,image);
+        clone= new Weapon(name,scope,range,level,damage,cost, levelRequired,image);
         return clone;
     }
 
     @Override
     public Weapon deepClone() {
-        int scopec,levelc,damagec,costc,levelRequiredc;
+        int scopec,rangec,levelc,damagec,costc,levelRequiredc;
         String namec,imagec;
         namec          = this.name;
         scopec         = this.scope;
+        rangec         = this.range;
         levelc         = this.level;
         damagec        = this.damage;
         costc          = this.cost;
         levelRequiredc = this.levelRequired;
         imagec         = this.image;
         Weapon clone;
-        clone= new Weapon(namec,scopec,levelc,damagec,costc,levelRequiredc,imagec);
+        clone= new Weapon(namec,scopec,rangec,levelc,damagec,costc,levelRequiredc,imagec);
         return clone;
     }
 
@@ -58,6 +63,15 @@ public class Weapon implements IPrototype<Weapon>{
     public void setScope(int scope) {
         this.scope = scope;
     }
+
+    public int getRange() {
+        return range;
+    }
+
+    public void setRange(int range) {
+        this.range = range;
+    }
+    
 
     public int getLevel() {
         return level;
@@ -101,13 +115,16 @@ public class Weapon implements IPrototype<Weapon>{
 
     @Override
     public String toString() {
-        return "Weapon{" + "name=" + name + ", scope=" + scope + ", level=" + level + ", damage=" + damage + ", cost=" + cost + ", levelRequired=" + levelRequired + ", image=" + image + '}';
+        return "Weapon{" + "name=" + name + ", scope=" + scope + ", range=" + range + ", level=" + level + ", damage=" + damage + ", cost=" + cost + ", levelRequired=" + levelRequired + ", image=" + image + '}';
     }
+
+    
     
     public static class WeaponBuilder implements IBuilder<Weapon>{
 
         private String name;
         private int scope;
+        private int range;
         private int level;
         private int damage;
         private int cost;
@@ -115,11 +132,12 @@ public class Weapon implements IPrototype<Weapon>{
         private String image;
 
         public WeaponBuilder() {
-            this.name = "";
-            this.scope = 1;
-            this.level = 1;
+            this.name   = "";
+            this.scope  = 1;
+            this.range  = 1;
+            this.level  = 1;
             this.damage = 1;
-            this.cost = 0;
+            this.cost   = 0;
             this.levelRequired = 1;
             this.image = "";
         }
@@ -133,6 +151,11 @@ public class Weapon implements IPrototype<Weapon>{
 
         public WeaponBuilder addScope(int scope) {
             this.scope = scope;
+            return this;
+        }
+        
+        public WeaponBuilder addRange(int range){
+            this.range=range;
             return this;
         }
 
@@ -164,7 +187,7 @@ public class Weapon implements IPrototype<Weapon>{
         
         @Override
         public Weapon build() {
-            return new Weapon(name,scope,level,damage,cost,levelRequired,image);
+            return new Weapon(name,scope,range,level,damage,cost,levelRequired,image);
         }
     }
     
