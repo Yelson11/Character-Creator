@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * @author Yelson
  */
-public abstract class Character implements IPrototype<Character>{
+public class Character implements IPrototype<Character>{
     
     private String name;
     private ArrayList<String> images;
@@ -58,7 +58,7 @@ public abstract class Character implements IPrototype<Character>{
 
     @Override
     public Character clone() {
-        Character clone = new Character(name, life, limitWeaponQuantity, level, space, levelRequired, cost, currentWeapon){};
+        Character clone = new Character(name, life, limitWeaponQuantity, level, space, levelRequired, cost, currentWeapon);
         clone.setAvailableWeapons(availableWeapons);
         clone.setImages(images);
         clone.setUsedWeapons(usedWeapons);
@@ -87,7 +87,7 @@ public abstract class Character implements IPrototype<Character>{
             imageList.add(images.get(i));
         }
         
-        Character clone = new Character(name, life, limitWeaponQuantity, level, space, levelRequired, cost, currentWeapon){};
+        Character clone = new Character(name, life, limitWeaponQuantity, level, space, levelRequired, cost, currentWeapon);
         clone.setAvailableWeapons(availableWeaponList);
         clone.setImages(imageList);
         clone.setUsedWeapons(usedWeaponList);
@@ -199,7 +199,7 @@ public abstract class Character implements IPrototype<Character>{
         public Character build() {
             //Aquí hay un {} al final
             if(currentWeapon==null)currentWeapon=usedWeapons.get(0);
-            return new Character(name, images, life, limitWeaponQuantity, usedWeapons, level, space, levelRequired, cost, availableWeapons, currentWeapon){};
+            return new Character(name, images, life, limitWeaponQuantity, usedWeapons, level, space, levelRequired, cost, availableWeapons, currentWeapon);
         }
          
      }
