@@ -5,6 +5,7 @@
  */
 package library;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -26,4 +27,17 @@ public class CharacterFactory {
         return characterPrototypes.get(pName);
     }
     
+    public static ArrayList<IPrototype<Character>> getPrototypes(String pKey, int pQuantity){
+        ArrayList<IPrototype<Character>> characters;
+        IPrototype<Character> prototype = characterPrototypes.get(pKey);
+        if (prototype != null){
+            characters = new ArrayList<>();
+            for (int i = 0; i < pQuantity; i++){
+                characters.add(prototype.deepClone());
+            }
+        }else{
+            characters = null;
+        }
+        return characters;
+    }
 }

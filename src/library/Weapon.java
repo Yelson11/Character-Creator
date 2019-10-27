@@ -1,7 +1,7 @@
 
 package library;
 
-public class Weapon implements IPrototype<Weapon>{
+public abstract class Weapon implements IPrototype<Weapon>{
     protected String name;
     protected int scope;
     protected int level;
@@ -19,11 +19,13 @@ public class Weapon implements IPrototype<Weapon>{
         this.levelRequired = levelRequired;
         this.image = image;
     }
-
+    
+    public void attack(){};
+    
     @Override
     public Weapon clone() {
         Weapon clone;
-        clone= new Weapon(name,scope,level,damage,cost, levelRequired,image);
+        clone = new Weapon(name,scope,level,damage,cost, levelRequired,image){};
         return clone;
     }
 
@@ -39,7 +41,7 @@ public class Weapon implements IPrototype<Weapon>{
         levelRequiredc = this.levelRequired;
         imagec         = this.image;
         Weapon clone;
-        clone= new Weapon(namec,scopec,levelc,damagec,costc,levelRequiredc,imagec);
+        clone = new Weapon(namec,scopec,levelc,damagec,costc,levelRequiredc,imagec){};
         return clone;
     }
 
@@ -164,7 +166,7 @@ public class Weapon implements IPrototype<Weapon>{
         
         @Override
         public Weapon build() {
-            return new Weapon(name,scope,level,damage,cost,levelRequired,image);
+            return new Weapon(name,scope,level,damage,cost,levelRequired,image){};
         }
     }
     
